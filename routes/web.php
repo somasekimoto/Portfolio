@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return response()->json(['hoge' => env('APP_SERVICE')]);
+Route::get('/env', function () {
+    return response()->json(['hoge' => env('APP_SERVICE'), 'env' => env('APP_ENV')]);
 });

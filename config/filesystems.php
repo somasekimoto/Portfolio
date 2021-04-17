@@ -38,19 +38,19 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-        ],
+            'key' => env('AWS_ACCESS_KEY_ID_S3'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY_S3'),
+            'region' => env('AWS_DEFAULT_REGION_S3'),
+            'bucket' => env('AWS_BUCKET_S3'),
+            'url' => env('AWS_URL_S3'),
+            'endpoint' => env('AWS_ENDPOINT_S3'),
+        ]
 
     ],
 

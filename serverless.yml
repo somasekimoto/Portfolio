@@ -1,16 +1,60 @@
-service: laravel
+service: ${self:custom.serviceName}
 
 provider:
   name: aws
-  # The AWS region in which to deploy (us-east-1 is the default)
   region: ap-northeast-1
-  # The stage of the application, e.g. dev, production, staging… ('dev' is the default)
-  stage: stage
+  stage: ${opt:stage, 'stg'}
+  release: ${opt:release, 'beta'}
+  deploymentBucket: sls-deps
   runtime: provided.al2
   ecr:
     images:
       laravel:
         path: ./
+  environment:
+    # Laravel environment variables
+    APP_STORAGE: "/tmp"
+    ENV: ${self:provider.stage}
+    BREF_BINARY_RESPONSES: 1
+  vpc-prod:
+    subnetIds:
+      - subnet-98488ad0 # (172.31.32.0/20) | ap-northeast-1a Default
+      - subnet-2d479206 # (172.31.16.0/20) | ap-northeast-1d Default
+    securityGroupIds:
+      - sg-9339f4e6 # (default) | default
+  vpc-stg:
+    subnetIds:
+      - subnet-0f952a4131eb0c144 # (10.0.1.0/24) | ap-northeast-1a staging
+      - subnet-05738742b19324194 # (10.0.2.0/24) | ap-northeast-1c staging
+      - subnet-020f1c2cd1963409f # (10.0.3.0/24) | ap-northeast-1d staging
+    securityGroupIds:
+      - sg-0e3c0c0ff2cf814a7 # (staging) | staging
+  vpc:
+    subnetIds: ${self:provider.vpc-${self:provider.stage}.subnetIds}
+    securityGroupIds: ${self:provider.vpc-${self:provider.stage}.securityGroupIds}
+  apiGateway:
+    binaryMediaTypes:
+      - "*/*"
+
+custom:
+  assetBucketName: portfolio-assets-${self:provider.stage}-${self:provider.release}
+  tempDataBucketName: portfolio-tmp-data-${self:provider.stage}
+  s3Sync:
+    - bucketName: ${self:custom.assetBucketName} # required
+      localDir: public # required
+  serviceName-beta: portfolio-beta
+  serviceName-stable: portfolio
+  serviceName: ${self:custom.serviceName-${self:provider.release}}
+  domainName-prod: "portfolio.somaseki.net" # domain name
+  domainName-stg: "stg-portfolio.somaseki.net"
+  customDomain:
+    domainName: ${self:custom.domainName-${self:provider.stage}}
+    basePath: ""
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    certificateName: "somaseki.net"
+    endpointType: "edge"
+    securityPolicy: tls_1_2
 
 package:
   # Directories to exclude from deployment
@@ -24,22 +68,41 @@ package:
 functions:
   # This function runs the Laravel website/API
   web:
-    # handler: public/index.php
-    # timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
-    # layers:
-    #   - ${bref:layer.php-74-fpm}
     image:
       name: laravel
     events:
-      - httpApi: "*"
-  # This function lets us run artisan commands in Lambda
-  artisan:
-    handler: artisan
-    timeout: 120 # in seconds
-    layers:
-      - ${bref:layer.php-74} # PHP
-      - ${bref:layer.console} # The "console" layer
+      - http: "ANY /"
+      - http: "ANY /{proxy+}"
 
 plugins:
-  # We need to include the Bref plugin
   - ./vendor/bref/bref
+  - serverless-s3-sync
+  - serverless-domain-manager
+resources:
+  Conditions:
+    IsBeta:
+      Fn::Equals:
+        - ${self:provider.release}
+        - beta
+  Resources:
+    AssetS3:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.assetBucketName}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - "*"
+              AllowedMethods:
+                - POST
+                - GET
+                - PUT
+                - DELETE
+                - HEAD
+              AllowedHeaders:
+                - "*"
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          IgnorePublicAcls: true
+          BlockPublicPolicy: true
+          RestrictPublicBuckets: true

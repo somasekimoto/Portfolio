@@ -6,7 +6,6 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "docker":"mix watch --hot --host 0.0.0.0",
         "prod": "npm run production",
         "production": "mix --production"
     },
@@ -16,21 +15,23 @@
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
         "deepmerge": "^4.2.2",
-        "fibers": "^5.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "postcss": "^8.1.14",
-        "resolve-url-loader": "^2.3.1",
+        "resolve-url-loader": "^3.1.2",
         "sass": "^1.32.8",
-        "sass-loader": "^8.0.2",
+        "sass-loader": "^7.1.0",
+        "serverless-domain-manager": "^5.1.0",
         "serverless-s3-sync": "^1.17.0",
         "vue": "^2.5.17",
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "commander": "^7.2.0",
+        "fibers": "^5.0.0",
         "vue-router": "^3.5.1",
         "vuetify": "^2.4.9"
     }
