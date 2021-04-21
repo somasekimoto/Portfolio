@@ -1,6 +1,8 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,9 @@ Route::get('/', function () {
 
 Route::get('/env', function () {
     return response()->json(['hoge' => env('APP_SERVICE'), 'env' => env('APP_ENV')]);
+});
+
+Route::get('/presignedIconUrl', function () {
+    $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.jpeg', Carbon::now()->addMinutes());
+    return response()->json(['url' => $url]);
 });

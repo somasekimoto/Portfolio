@@ -1,3 +1,6 @@
 <template>
-  <example-component></example-component>
+    <div>
+        <header-component></header-component>
+        <body-component></body-component>
+    </div>
 </template>

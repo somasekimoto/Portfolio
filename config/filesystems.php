@@ -50,7 +50,17 @@ return [
             'bucket' => env('AWS_BUCKET_S3'),
             'url' => env('AWS_URL_S3'),
             'endpoint' => env('AWS_ENDPOINT_S3'),
+        ],
+        's3_icon' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID_S3'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY_S3'),
+            'region' => env('AWS_DEFAULT_REGION_S3'),
+            'bucket' => env('AWS_BUCKET_ICON'),
+            'url' => env('AWS_URL_ICON'),
+            'endpoint' => env('AWS_ENDPOINT_S3'),
         ]
+
 
     ],
 
