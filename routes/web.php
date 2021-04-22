@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/env', function () {
     return response()->json(['hoge' => env('APP_SERVICE'), 'env' => env('APP_ENV')]);
 });
 
 Route::get('/presignedIconUrl', function () {
-    $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.jpeg', Carbon::now()->addMinutes());
+    $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.jpeg', Carbon::now()->addMinutes(10));
     return response()->json(['url' => $url]);
 });
+
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');

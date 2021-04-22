@@ -1,18 +1,17 @@
 <template>
-    <v-app-bar color="gray accent-4">
+    <v-app-bar>
+        <v-toolbar-title>
+            Soma Sekimoto
+        </v-toolbar-title>
         <v-app-bar-nav-icon>
             <v-avatar size="36px">
                 <img alt="SS" :src="iconImg" />
                 <v-icon></v-icon>
             </v-avatar>
         </v-app-bar-nav-icon>
-        <v-toolbar-title>
-            Soma's Portfolio
-        </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-switch
             @click="switchTheme"
-            :label="darkMode ? 'Dark' : 'Light'"
             :value="darkMode"
             inset
         ></v-switch>
