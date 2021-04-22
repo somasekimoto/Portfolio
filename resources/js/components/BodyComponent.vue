@@ -6,8 +6,8 @@
             <v-card-text>
                 I'm an example componen
             </v-card-text>
-            <home-component></home-component>
         </v-card>
+        <router-view></router-view>
     </v-main>
 </template>
 
