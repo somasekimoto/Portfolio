@@ -19,6 +19,10 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            /* font-family 上書き */
+            .v-application{
+                font-family: 'arial black', sans-serif !important;
+            }
         </style>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>

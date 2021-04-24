@@ -1,4 +1,5 @@
 up:
+	php artisan config:clear
 	touch .env
 	cp .env.local .env
 	./vendor/bin/sail up
@@ -33,6 +34,7 @@ zip:
 	gzip --best -f public/js/vendor.js
 	gzip --best -f public/js/manifest.js
 release:
+	php artisan config:clear
 	sls deploy --force --release $(release) --stage $(stage)
 stg_beta:
 	@make common stage=stg release=beta
