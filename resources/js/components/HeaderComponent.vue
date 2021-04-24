@@ -14,6 +14,7 @@
             @click="switchTheme"
             :value="darkMode"
             inset
+            hide-details
         ></v-switch>
     </v-app-bar>
 </template>
