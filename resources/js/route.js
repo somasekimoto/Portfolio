@@ -1,5 +1,5 @@
 let routes = [];
-let paths = ["home"];
+let paths = [];
 const snakeToCamel = (str) =>
     (str.charAt(0).toUpperCase() + str.substring(1)).replace(
         /([-_/][a-z])/g,

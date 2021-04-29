@@ -5,7 +5,7 @@
         </v-toolbar-title>
         <v-app-bar-nav-icon>
             <v-avatar size="36px">
-                <img alt="SS" :src="iconImg" />
+                <img alt="icon" :src="iconImg" />
                 <v-icon></v-icon>
             </v-avatar>
         </v-app-bar-nav-icon>
@@ -20,13 +20,12 @@
 </template>
 <script>
 export default {
+    props: ["darkMode"],
     data: () => ({
         iconImg: null,
-        darkMode: false
     }),
     created() {
         this.setIcon();
-        this.darkMode = this.$vuetify.theme.dark;
     },
     methods: {
         setIcon: function() {
@@ -44,8 +43,7 @@ export default {
                 );
         },
         switchTheme: function() {
-            this.darkMode = !this.darkMode;
-            this.$vuetify.theme.dark = this.darkMode;
+            this.$emit('changeTheme')
         }
     }
 };

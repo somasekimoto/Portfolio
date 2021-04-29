@@ -1,12 +1,6 @@
 <template>
     <v-main>
-        <v-card>
-            <v-card-subtitle>Component</v-card-subtitle>
-
-            <v-card-text>
-                I'm an example componen
-            </v-card-text>
-        </v-card>
+        <home-component></home-component>
         <router-view></router-view>
     </v-main>
 </template>
