@@ -6,7 +6,6 @@
         <v-app-bar-nav-icon>
             <v-avatar size="36px">
                 <img alt="icon" :src="iconImg" />
-                <v-icon></v-icon>
             </v-avatar>
         </v-app-bar-nav-icon>
         <v-spacer></v-spacer>
@@ -20,28 +19,8 @@
 </template>
 <script>
 export default {
-    props: ["darkMode"],
-    data: () => ({
-        iconImg: null,
-    }),
-    created() {
-        this.setIcon();
-    },
+    props: ["darkMode", "iconImg"],
     methods: {
-        setIcon: function() {
-            axios
-                .get("/presignedIconUrl")
-                .then(
-                    function(res) {
-                        this.iconImg = res.data.url;
-                    }.bind(this)
-                )
-                .catch(
-                    function(err) {
-                        console.log(err);
-                    }.bind(this)
-                );
-        },
         switchTheme: function() {
             this.$emit('changeTheme')
         }

@@ -48,9 +48,5 @@ const app = new Vue({
         mode: "history",
         routes,
     }),
-    vuetify: new Vuetify({
-        icons: {
-            iconfont: "mdi",
-        },
-    }),
+    vuetify: new Vuetify(),
 });
