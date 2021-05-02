@@ -21,7 +21,7 @@ Route::get('/env', function () {
 });
 
 Route::get('/presignedIconUrl', function () {
-    $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.jpeg', Carbon::now()->addMinutes(10));
+    $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.jpeg', Carbon::now()->addMinutes(60));
     return response()->json(['url' => $url]);
 });
 

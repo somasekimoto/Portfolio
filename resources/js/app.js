@@ -49,8 +49,27 @@ const app = new Vue({
         routes,
     }),
     vuetify: new Vuetify({
-        icons: {
-            iconfont: "mdi",
-        },
+        theme: {
+            themes: {
+              light: {
+                twitter: "#1DA1F2",
+                facebook: "#3B5998",
+                github: "black",
+                instagram: "#8a3ab9",
+                qiita: "#00CA00",
+                ameba: "#82be28",
+                background: "#E1E8ED",
+              },
+              dark: {
+                twitter: "#1DA1F2",
+                facebook: "1877f2", 
+                github: "white",
+                instagram: "#fbad50",
+                qiita: "#31B600",
+                ameba: "#82be28",
+                background: "#243447", 
+              },
+            },
+        }
     }),
 });
