@@ -1,5 +1,5 @@
 let routes = [];
-let paths = [];
+let paths = ["careers"];
 const snakeToCamel = (str) =>
     (str.charAt(0).toUpperCase() + str.substring(1)).replace(
         /([-_/][a-z])/g,
@@ -20,5 +20,11 @@ for (let path of paths) {
         component: component,
     });
 }
+
+routes.push({
+    path: "*",
+    name: "home",
+    component: Vue.component("HomeComponent"),
+})
 
 module.exports = routes;

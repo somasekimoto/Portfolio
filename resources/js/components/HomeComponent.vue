@@ -1,6 +1,6 @@
 <template>
 <v-container>
-    <v-row justify="center" class="ma-16">
+    <v-row justify="center" class="ma-14">
         <v-avatar size="120">
             <img alt="icon" :src="iconImg"/>
         </v-avatar>
@@ -9,19 +9,8 @@
         <v-col cols="auto" class="text-center">
             <h1>Soma Sekimoto</h1>
             <div class="ma-6">
-                <p>started working as a Web Developer in Japan since 2020.6</p>
-                <template v-for="(career, index) in careers">
-                    <v-card>
-                        <h3>{{career.position}} @ <a :href="career.url" target="_blank" rel="noopener">{{career.place}}</a></h3>
-                        <v-card-subtitle>{{career.since}} ~ {{career.until}}</v-card-subtitle>
-                        <v-card-text>{{career.skills.join(', ')}}</v-card-text>
-                    </v-card>
-                    <template v-if="index != careers.length - 1">
-                        <div style="height: 50px;">
-                            <v-divider vertical></v-divider>
-                        </div>
-                    </template>
-                </template>
+                <p class="my-5">started working as a Web Developer in Japan since 2020.6</p>
+                <career-component :career="careers[0]"></career-component>
             </div>
         </v-col>
     </v-row>
@@ -53,26 +42,13 @@
 </template>
 <script>
 export default {
-    props: ['iconImg'],
+    props: ['iconImg', 'careers'],
+    computed:{
+        careersv: function(){
+            return (typeof(this.careers) == "undefined") ? this.careers : []
+        }
+    },
     data: ()=>({
-        careers: [
-            {
-                position: "Fullstack Developer",
-                place: "Fiveneeds Co. Ltd",
-                url: "https://www.fiveneeds.co.jp/",
-                since:"2020.6",
-                until:"NOW",
-                skills: ["Php(Laravel)", "Javascript(Vue.js)", "Python", "AWS"],
-            },
-            {
-                position: "Student",
-                place: "Tech Camp",
-                url: "https://tech-camp.in/",
-                since:"2020.1",
-                until:"2020.4",
-                skills: ["Ruby(Ruby on rails)", "Javascript(jQuery, React.js)", "AWS"],
-            }
-        ],
         icons: [
             {
                 name: "twitter",
