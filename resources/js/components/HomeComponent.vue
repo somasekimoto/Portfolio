@@ -1,6 +1,6 @@
 <template>
 <v-container>
-    <v-row justify="center" class="ma-16">
+    <v-row justify="center" class="ma-14">
         <v-avatar size="120">
             <img alt="icon" :src="iconImg"/>
         </v-avatar>
@@ -9,6 +9,8 @@
         <v-col cols="auto" class="text-center">
             <h1>Soma Sekimoto</h1>
             <div class="ma-6">
+                <p class="my-5">started working as a Web Developer in Japan since 2020.6</p>
+                <career-component :career="careers[0]"></career-component>
             </div>
         </v-col>
     </v-row>
@@ -40,7 +42,12 @@
 </template>
 <script>
 export default {
-    props: ['iconImg'],
+    props: ['iconImg', 'careers'],
+    computed:{
+        careersv: function(){
+            return (typeof(this.careers) == "undefined") ? this.careers : []
+        }
+    },
     data: ()=>({
         icons: [
             {
