@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="{background: $vuetify.theme.themes[theme].background}">
         <header-component v-if="!isSmall" :darkMode="darkMode" :iconImg="iconImg" @changeTheme="changeTheme"></header-component>
         <body-component :iconImg="iconImg"></body-component>
         <footer-component v-if="isSmall" :darkMode="darkMode" @changeTheme="changeTheme" ></footer-component>
@@ -17,6 +17,9 @@ export default {
         this.setIcon();
     },
     computed: {
+        theme: function(){
+            return this.$vuetify.theme.dark ? "dark": "light"
+        },
         isSmall: function(){
             return ['xs', 'sm'].includes(this.$vuetify.breakpoint.name)
         },
