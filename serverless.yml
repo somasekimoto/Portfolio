@@ -45,8 +45,8 @@ custom:
   serviceName-beta: portfolio-beta
   serviceName-stable: portfolio
   serviceName: ${self:custom.serviceName-${self:provider.release}}
-  domainName-prod: "portfolio.somaseki.net" # domain name
-  domainName-stg: "stg-portfolio.somaseki.net"
+  domainName-prod: "somaseki.net" # domain name
+  domainName-stg: "stg.somaseki.net"
   customDomain:
     domainName: ${self:custom.domainName-${self:provider.stage}}
     basePath: ""
