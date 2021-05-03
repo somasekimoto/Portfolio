@@ -18,7 +18,6 @@ window.Vue = require("vue").default;
 
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-import '@mdi/font/css/materialdesignicons.css';
 
 Vue.use(Vuetify);
 
@@ -46,30 +45,30 @@ const app = new Vue({
     router: new VueRouter({
         base: "/",
         mode: "history",
-        routes,
+        routes
     }),
     vuetify: new Vuetify({
         theme: {
             themes: {
-              light: {
-                twitter: "#1DA1F2",
-                facebook: "#3B5998",
-                github: "black",
-                instagram: "#8a3ab9",
-                qiita: "#00CA00",
-                ameba: "#82be28",
-                background: "#E1E8ED",
-              },
-              dark: {
-                twitter: "#1DA1F2",
-                facebook: "1877f2", 
-                github: "white",
-                instagram: "#fbad50",
-                qiita: "#31B600",
-                ameba: "#82be28",
-                background: "#243447", 
-              },
-            },
+                light: {
+                    twitter: "#1DA1F2",
+                    facebook: "#3B5998",
+                    github: "000000",
+                    instagram: "#8a3ab9",
+                    qiita: "#00CA00",
+                    ameba: "#82be28",
+                    background: "#E1E8ED"
+                },
+                dark: {
+                    twitter: "#1DA1F2",
+                    facebook: "1877f2",
+                    github: "FFFFFF",
+                    instagram: "#fbad50",
+                    qiita: "#31B600",
+                    ameba: "#82be28",
+                    background: "#243447"
+                }
+            }
         }
-    }),
+    })
 });
