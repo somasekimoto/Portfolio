@@ -1,9 +1,9 @@
 let routes = [];
-let paths = ["careers"];
-const snakeToCamel = (str) =>
+let paths = ["skills", "careers"];
+const snakeToCamel = str =>
     (str.charAt(0).toUpperCase() + str.substring(1)).replace(
         /([-_/][a-z])/g,
-        (group) =>
+        group =>
             group
                 .toUpperCase()
                 .replace("-", "")
@@ -17,14 +17,14 @@ for (let path of paths) {
     routes.push({
         path: "/" + path,
         name: path,
-        component: component,
+        component: component
     });
 }
 
 routes.push({
     path: "*",
     name: "home",
-    component: Vue.component("HomeComponent"),
-})
+    component: Vue.component("HomeComponent")
+});
 
 module.exports = routes;
