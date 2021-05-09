@@ -22,12 +22,12 @@ export default {
   computed: {
     years: function() {
       let nums = Math.floor(this.skill.experience / 12);
-      let unit = nums == 1 ? "year" : "years";
+      let unit = nums == 1 ? " year " : " years ";
       return nums > 0 ? nums + unit : "";
     },
     months: function() {
       let nums = this.skill.experience % 12;
-      let unit = nums == 1 ? "month" : "months";
+      let unit = nums == 1 ? " month" : " months";
       return nums > 0 ? nums + unit : "";
     }
   },
