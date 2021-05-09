@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar>
+  <v-app-bar fixed>
     <v-toolbar-title>
       <router-link style="color: inherit;" to="/">Soma Sekimoto</router-link>
     </v-toolbar-title>
