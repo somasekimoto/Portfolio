@@ -13,7 +13,7 @@
       <v-spacer></v-spacer>
       <template v-for="path in paths">
         <v-col cols="auto">
-          <router-link style="color: inherit;" :to="'/' + path.name">{{path.name}}</router-link>
+          <router-link style="color: inherit;" :to="'/' + path.to">{{path.name}}</router-link>
         </v-col>
       </template>
       <v-col cols="auto" class="ml-3">
@@ -28,10 +28,16 @@ export default {
   data: () => ({
     paths: [
       {
-        name: "skills"
+        name: "Home",
+        to: ""
       },
       {
-        name: "careers"
+        name: "Skills",
+        to: "skills"
+      },
+      {
+        name: "Careers",
+        to: "careers"
       }
     ]
   }),
