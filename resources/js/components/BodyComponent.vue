@@ -1,12 +1,12 @@
 <template>
   <v-main class="py-10">
-    <router-view :iconImg="iconImg" :careers="careers"></router-view>
+    <router-view :iconImg="iconImg" :careers="careers" :isSmall="isSmall"></router-view>
   </v-main>
 </template>
 
 <script>
 export default {
-  props: ["iconImg"],
+  props: ["iconImg", "isSmall"],
   data: () => ({
     careers: [
       {
