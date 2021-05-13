@@ -35,6 +35,8 @@ zip:
 	gzip --best -f public/js/manifest.js
 release:
 	php artisan config:clear
-	sls deploy --force --release $(release) --stage $(stage)
+	sls deploy --force --release $(release) --stage $(stage) -v
 stg_beta:
 	@make common stage=stg release=beta
+prod_beta:
+	@make common stage=prod release=beta
