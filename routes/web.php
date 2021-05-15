@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Route::get('/presignedIconUrl', function () {
     $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.png', Carbon::now()->addMinutes(60));
     return response()->json(['url' => $url]);
 });
+
+// Route::get('/fetchWorks', 'WorkController@fetchWorks');
+Route::get('/fetchWorks', [WorkController::class, 'fetchWorks']);
 
 Route::get('/{any}', function () {
     return view('app');

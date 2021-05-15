@@ -1,6 +1,8 @@
 <template>
   <v-container class="text-center py-16 my-16">
-    <h1>Skills</h1>
+    <h1>
+      <v-icon large class="mx-2">mdi-arm-flex</v-icon>Skills
+    </h1>
     <div style="height: 50px;">
       <v-divider class="my-8" horizontal></v-divider>
     </div>

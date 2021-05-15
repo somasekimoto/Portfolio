@@ -1,6 +1,6 @@
 <template>
   <v-main class="py-10">
-    <router-view :iconImg="iconImg" :careers="careers" :isSmall="isSmall"></router-view>
+    <router-view :iconImg="iconImg" :careers="careers" :isSmall="isSmall" :works="works"></router-view>
   </v-main>
 </template>
 
@@ -25,7 +25,25 @@ export default {
         until: "2020.4",
         skills: ["Ruby(Ruby on rails)", "Javascript(jQuery, React.js)", "AWS"]
       }
-    ]
-  })
+    ],
+    works: []
+  }),
+  created() {
+    this.fetchRepos();
+  },
+  methods: {
+    fetchRepos: function() {
+      axios
+        .get("/fetchWorks")
+        .then(
+          function(res) {
+            this.works = res.data.works;
+          }.bind(this)
+        )
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>

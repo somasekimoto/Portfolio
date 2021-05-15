@@ -1,5 +1,5 @@
 let routes = [];
-let paths = ["skills", "careers"];
+let paths = ["skills", "careers", "works"];
 const snakeToCamel = str =>
     (str.charAt(0).toUpperCase() + str.substring(1)).replace(
         /([-_/][a-z])/g,
