@@ -36,6 +36,10 @@ export default {
         to: "skills"
       },
       {
+        name: "Works",
+        to: "works"
+      },
+      {
         name: "Careers",
         to: "careers"
       }

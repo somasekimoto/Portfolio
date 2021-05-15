@@ -1,9 +1,15 @@
 <template>
-  <v-card elevation="5">
+  <v-card elevation="9" class="rounded-lg">
     <v-container>
-      <v-card-title>{{skill.name}}</v-card-title>
+      <v-card-title>
+        <v-icon large>mdi-code-tags</v-icon>
+        {{skill.name}}
+      </v-card-title>
       <v-card-subtitle>{{skill.details.join(', ')}}</v-card-subtitle>
-      <v-card-text>{{years}}{{months}}</v-card-text>
+      <v-card-text>
+        <v-icon>mdi-calendar-clock</v-icon>
+        {{years}}{{months}}
+      </v-card-text>
       <v-rating
         v-model="skill.level"
         :full-icon="fullIcon"
