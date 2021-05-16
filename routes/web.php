@@ -17,9 +17,6 @@ use App\Http\Controllers\WorkController;
 */
 
 
-Route::get('/env', function () {
-    return response()->json(['hoge' => env('APP_SERVICE'), 'env' => env('APP_ENV')]);
-});
 
 Route::get('/presignedIconUrl', function () {
     $url = Storage::disk('s3_icon')->temporaryUrl('portfolio/icon.png', Carbon::now()->addMinutes(60));

@@ -17,7 +17,7 @@
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? 'mdi-tag' : 'mdi-chevron-down' }}</v-icon>
+          <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-tag' }}</v-icon>
         </v-btn>
       </v-card-actions>
       <v-expand-transition>

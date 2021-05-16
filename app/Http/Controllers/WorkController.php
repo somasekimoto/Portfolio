@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class WorkController extends Controller
 {
     //
-
     public function fetchWorks()
     {
         $allRepos = self::getAllRepos();
