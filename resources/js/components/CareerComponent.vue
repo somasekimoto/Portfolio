@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="rounded-lg">
     <v-container>
       <h3>
         <v-icon>mdi-office-building</v-icon>

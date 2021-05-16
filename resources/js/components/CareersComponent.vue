@@ -7,7 +7,7 @@
       <v-divider class="my-8" horizontal></v-divider>
     </div>
     <v-timeline :dense="isSmall" align-top>
-      <v-timeline-item v-for="(career, index) in careers">
+      <v-timeline-item v-for="(career, index) in careers" :key="index">
         <career-component :career="career"></career-component>
       </v-timeline-item>
     </v-timeline>
