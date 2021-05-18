@@ -22,11 +22,15 @@ import "vuetify/dist/vuetify.min.css";
 Vue.use(Vuetify);
 
 const files = require.context("./", true, /\.vue$/i);
-files
-    .keys()
-    .map((key) =>
-        Vue.component(key.split("/").pop().split(".")[0], files(key).default)
-    );
+files.keys().map(key =>
+    Vue.component(
+        key
+            .split("/")
+            .pop()
+            .split(".")[0],
+        files(key).default
+    )
+);
 
 import VueRouter from "vue-router";
 
@@ -48,6 +52,9 @@ const app = new Vue({
         routes
     }),
     vuetify: new Vuetify({
+        icons: {
+            iconfont: "mdiSvg"
+        },
         theme: {
             themes: {
                 light: {

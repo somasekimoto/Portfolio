@@ -17,10 +17,10 @@
     <v-row justify="center" align="center">
         <v-col cols="auto">
             <v-row>
-                <template v-for="icon in icons">
+                <template v-for="icon in sns">
                     <v-col cols="auto">
                         <v-btn icon :href="icon.url" target="_blank" rel="noopener">
-                            <v-icon large :color="icon.color">mdi-{{icon.name}}</v-icon>
+                            <v-icon large :color="icon.color">{{icons["mdi" + icon.name]}}</v-icon>
                         </v-btn>
                     </v-col>
                 </template>
@@ -41,6 +41,7 @@
 </v-container>
 </template>
 <script>
+import { mdiTwitter, mdiGithub, mdiInstagram, mdiFacebook} from "@mdi/js";
 export default {
     props: ['iconImg', 'careers'],
     computed:{
@@ -49,24 +50,25 @@ export default {
         }
     },
     data: ()=>({
-        icons: [
+        icons: {mdiTwitter, mdiGithub, mdiInstagram, mdiFacebook},
+        sns: [
             {
-                name: "twitter",
+                name: "Twitter",
                 url: "https://twitter.com/s_souma0421",
                 color: "twitter",
             },
             {
-                name: "github",
+                name: "Github",
                 url: "https://github.com/SomaSekimoto",
                 color: "github",
             },
             {
-                name: "instagram",
+                name: "Instagram",
                 url: "https://www.instagram.com/soma.0421/",
                 color: "instagram",
             },
             {
-                name: "facebook",
+                name: "Facebook",
                 url: "https://www.facebook.com/Soma.421",
                 color: "facebook",
             },

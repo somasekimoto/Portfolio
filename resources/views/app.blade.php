@@ -8,7 +8,6 @@
         <title>Portfolio</title>
 
         <!-- Fonts -->
-        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="{{ s3_icon_asset('portfolio/icon.png') }}">
 
         <!-- Styles -->
