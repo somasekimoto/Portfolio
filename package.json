@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@mdi/js": "^5.9.55",
         "axios": "^0.21",
         "bootstrap": "^4.0.0",
         "browser-sync": "^2.26.14",
@@ -30,7 +31,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@mdi/font": "^5.9.55",
         "commander": "^7.2.0",
         "fibers": "^5.0.0",
         "vue-router": "^3.5.1",

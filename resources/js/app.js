@@ -48,6 +48,9 @@ const app = new Vue({
         routes
     }),
     vuetify: new Vuetify({
+        icons: {
+            iconfont: "mdiSvg"
+        },
         theme: {
             themes: {
                 light: {
